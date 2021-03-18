@@ -8,11 +8,11 @@ The protocol used to transfer data between client and server is **TCP** because 
 
 ### Server
 
-The server will listen on port **2021** with the IPv4 address of the machine where the application will be running on (localhost).
+The server will listen on port **8080** with the IPv4 address of the machine where the application will be running on (localhost).
 
 ### Client
 
-The client will try to contact the server on port **2021** and on the server's address, which will be the address of the machine where the server program will be running on.
+The client will try to contact the server on port **8080** and on the server's address, which will be the address of the machine where the server program will be running on.
 
 ## Who speaks first
 
