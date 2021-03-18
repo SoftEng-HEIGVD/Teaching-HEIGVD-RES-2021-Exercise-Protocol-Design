@@ -20,7 +20,7 @@ The first side to speak is the **client**. It will be contacting the server with
 
 ## Sequence of messages exchanged (flow)
 
-![image-20210318104637430](C:\Users\mazie\AppData\Roaming\Typora\typora-user-images\image-20210318104637430.png)
+![flow](https://user-images.githubusercontent.com/25340549/111608552-a1f87600-87d9-11eb-8d52-00281e76389f.png)
 
 ## What happens when a message is received from the other party ? (semantics)
 
