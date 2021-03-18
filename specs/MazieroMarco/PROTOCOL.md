@@ -8,11 +8,11 @@ The protocol used to transfer data between client and server is **TCP** because 
 
 ### Server
 
-The server will listen on port **2021** with the IPv4 address of the machine where the application will be running on (localhost).
+The server will listen on port **8080** with the IPv4 address of the machine where the application will be running on (localhost).
 
 ### Client
 
-The client will try to contact the server on port **2021** and on the server's address, which will be the address of the machine where the server program will be running on.
+The client will try to contact the server on port **8080** and on the server's address, which will be the address of the machine where the server program will be running on.
 
 ## Who speaks first
 
@@ -20,7 +20,7 @@ The first side to speak is the **client**. It will be contacting the server with
 
 ## Sequence of messages exchanged (flow)
 
-![image-20210318104637430](C:\Users\mazie\AppData\Roaming\Typora\typora-user-images\image-20210318104637430.png)
+![flow](https://user-images.githubusercontent.com/25340549/111608552-a1f87600-87d9-11eb-8d52-00281e76389f.png)
 
 ## What happens when a message is received from the other party ? (semantics)
 
@@ -50,4 +50,4 @@ The messages are streams that can be converted into strings, split and converted
 
 ## When is the connexion closed and by who ?
 
-When the **client** is done, it will close its socket. The server will be notified and will immediately close its connexion too.
+When the **client** is done, it will send a message to the server and close its socket. The server will be notified and will immediately close its connexion too.
