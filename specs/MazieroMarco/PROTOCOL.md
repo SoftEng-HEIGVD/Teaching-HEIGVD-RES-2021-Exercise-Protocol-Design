@@ -50,4 +50,4 @@ The messages are streams that can be converted into strings, split and converted
 
 ## When is the connexion closed and by who ?
 
-When the **client** is done, it will close its socket. The server will be notified and will immediately close its connexion too.
+When the **client** is done, it will send a message to the server and close its socket. The server will be notified and will immediately close its connexion too.
