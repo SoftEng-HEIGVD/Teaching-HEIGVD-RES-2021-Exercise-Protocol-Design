@@ -39,9 +39,3 @@ Contrairement à Fortran (j'sé plus lequel), l'espace est déterminant.
 
 ### Who closes the connection and when?
 Le client, quand il dira `kthx` (faut toujours dire « merci »).
-
-### Pourquoi markdown quand on a org avec Emacs ?
-Je me pose encore la question.
-
-(ce fichier est encore sujet à modification pour faire en sorte qu'il corresponde plus ou moins à la réalité (parce 
-que sur la papier, ça a l'air d'aller))
