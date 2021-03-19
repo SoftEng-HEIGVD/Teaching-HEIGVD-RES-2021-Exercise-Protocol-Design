@@ -28,11 +28,9 @@ The client is always the one to initiate the communication.
 - QUIT:       - Close connection to client  
 
 ## Syntax
-OPERATION: Operation\tNumber\tNumber
-
-RES: status number(optional)
-
-QUIT: EMPTY
+- OPERATION: Operation\tNumber\tNumber
+- RES: status\tnumber(optional)
+- QUIT: EMPTY
 
 ## End of connection
 The client is always the one to close the connection. He sends a quit message to the server to let it know, it can close the connection on its side.
