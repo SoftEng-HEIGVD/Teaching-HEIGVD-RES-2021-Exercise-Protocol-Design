@@ -1,6 +1,6 @@
 # Specification
 - TCP protocol
-- The client enters the IP address and the port. The client knows where the server is with a DNS.
+- The client enters the IP address and the port 110901. The client knows where the server is with a DNS.
 - The client speaks first.
 - The client sends the calculation to compute directly to the server and the server sends the result or an error.
 - The server checks if the syntax is correct. The client checks if the server has sent an error.
