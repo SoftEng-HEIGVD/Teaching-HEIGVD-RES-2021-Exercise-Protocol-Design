@@ -24,10 +24,9 @@ Le protocole est sans état.
 
 2. Syntaxe des messages
 Le protocole CALC définit 6 messages de base:
-- WELCOLE
+- WELCOME
 - ADD
 - MULT
-- ERROR
 - BAD_REQUEST
 - DONE
 
