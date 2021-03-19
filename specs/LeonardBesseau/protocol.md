@@ -23,13 +23,15 @@ The client is always the one to initiate the communication.
 - QUIT:       - NA (the client is the sender)
 
 ### Server
-- OPERATION:  - check if operation is supported, check if number are valid
-- RES:        NA (the server is the sender)
-- QUIT:       - Close connection to client
+- OPERATION:  - check if operation is supported, check if number are valid  
+- RES:        NA (the server is the sender)  
+- QUIT:       - Close connection to client  
 
 ## Syntax
 OPERATION: Operation\tNumber\tNumber
+
 RES: status number(optional)
+
 QUIT: EMPTY
 
 ## End of connection
