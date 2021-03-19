@@ -48,6 +48,12 @@ Le serveur effectue le calcul et répond en donnant le résultat sous la forme :
 RESULT : result
 ```
 
+Dans le cas où la commande envoyée est invalide, le serveur répond par un message d'erreur : 
+
+```
+ERROR : Invalid command, try again
+```
+
 
 
 Exemple d'utilisation : 
