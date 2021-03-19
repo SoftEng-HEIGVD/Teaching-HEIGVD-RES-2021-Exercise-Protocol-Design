@@ -29,7 +29,7 @@ The client is always the one to initiate the communication.
 
 ## Syntax
 OPERATION: Operation\tNumber\tNumber
-RES: number or error message
+RES: status number(optional)
 QUIT: EMPTY
 
 ## End of connection
