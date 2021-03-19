@@ -1,6 +1,6 @@
 # RES - Exercise-Protocol-Design 2021
 
-Authors : Alessandro Parinno & Dylan Canton 
+Authors : Alessandro Parrino & Dylan Canton 
 
 Date : 19.03.2021
 
@@ -10,41 +10,83 @@ Date : 19.03.2021
 
 #### What transport protocol do we use?
 
-
+Nous utilisons le protocole TCP/IP car c'est celui utilisé par défaut par les sockets API de Java. C'est également un protocole de communication classique et très souvent utilisé.
 
 
 
 #### How does the client find the server (addresses and ports)?
 
-
+Lors de son lancement, le serveur indique son port d'écoute. Le client peut alors se connecter en initialisant un socket et indiquant une adresse IP et un port, il faudra donc indiquer l'adresse IP du serveur ainsi que le même port que celui sur lequel le serveur écoute. 
 
 
 
 #### Who speaks first?
 
-
+Le client initialise en premier la connexion au serveur, qui décide d'accepter ou non. 
 
 
 
 #### What is the sequence of messages exchanged by the client and the server? (flow)
 
-
+![flow](./media/flow.png)
 
 
 
 #### What happens when a message is received from the other party? (semantics)
 
+Lorsque la connexion est établie, le serveur envoie un message de bienvenu au client 
 
+```
+Hello, enter your operation :
+```
+
+
+
+Le serveur effectue le calcul et répond en donnant le résultat sous la forme :  
+
+```
+RESULT : result
+```
+
+
+
+Exemple d'utilisation : 
+
+```
+ADD 5 10
+
+Result : 15
+```
 
 
 
 #### What is the syntax of the messages? How we generate and parse them? (syntax)
 
+Le client peut envoyer des opérations au serveur à l'aide des 3 commandes suivantes : 
 
+```
+ADD number number
+
+SUB number number
+
+MULT number number
+```
+
+
+
+Un message est sous la forme d'une String. Lorsqu'elle est reçue par le serveur, elle est décomposé en 3 parties : 
+
+* Opération
+* Opérande gauche
+* Opérande droite
 
 
 
 #### Who closes the connection and when?
 
+Le client ferme la connexion quand il le désire en effectuant la commande : 
 
+```
+QUIT
+```
 
