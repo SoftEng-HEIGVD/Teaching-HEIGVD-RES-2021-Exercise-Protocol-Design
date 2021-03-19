@@ -1,6 +1,6 @@
 David Pellissier
 
-Spécification du protocole ez
+# Spécification du protocole ez
 
 > What transport protocol do we use?
 
