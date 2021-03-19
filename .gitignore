@@ -9,3 +9,9 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+
+/Teaching-HEIGVD-RES-2021-Exercise-Protocol-Design.iws
+/Teaching-HEIGVD-RES-2021-Exercise-Protocol-Design.ipr
+/Teaching-HEIGVD-RES-2021-Exercise-Protocol-Design.iml
+
+*.iml
