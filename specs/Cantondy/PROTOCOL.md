@@ -18,6 +18,8 @@ Nous utilisons le protocole TCP/IP car c'est celui utilisé par défaut par les 
 
 Lors de son lancement, le serveur indique son port d'écoute. Le client peut alors se connecter en initialisant un socket et indiquant une adresse IP et un port, il faudra donc indiquer l'adresse IP du serveur ainsi que le même port que celui sur lequel le serveur écoute. 
 
+Le port utilisé pour la communication est le : **1440**
+
 
 
 #### Who speaks first?
