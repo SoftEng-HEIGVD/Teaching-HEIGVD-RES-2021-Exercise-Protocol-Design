@@ -4,7 +4,7 @@
 
 ## Objectifs
 
-The but de ce laboratoire est d'imaginer et d'implémenter un protocole client-serveur permettant de réaliser des opérations arithmétiques, telle une calculatrice.
+Le but de ce laboratoire est d'imaginer et d'implémenter un protocole client-serveur permettant de réaliser des opérations arithmétiques, telle une calculatrice.
 Ce protocole sela utilisable au travers d'un réseau TCP/IP. Le serveur est capable de réaliser des opérations aritmétiques de base (+, -, *, /).
 
 &nbsp;
@@ -66,7 +66,7 @@ Voici l'exemple d'une séquence d'intéraction entre un client et un serveur
 C: INIT  
 S: HELLO  
 C: HELP  
-S: LIST
+S: LIST  
 C: CALC 4 + 6  
 S: RESULT 10  
 C: CALC 5 6  
