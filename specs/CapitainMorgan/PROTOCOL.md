@@ -4,7 +4,7 @@ TCP
 
 > How does the client find the server (addresses and ports)?
 
-IDK
+port 2021 client, port 2021 serveur
 
 > Who speaks first?
 
@@ -16,7 +16,7 @@ Client -> mult 5 2 -> serveur -> 10 -> Client
 
 > What happens when a message is received from the other party? (semantics)
 
-IDK
+le verifie et le traite
 
 > What is the syntax of the messages? How we generate and parse them? (syntax)
 
