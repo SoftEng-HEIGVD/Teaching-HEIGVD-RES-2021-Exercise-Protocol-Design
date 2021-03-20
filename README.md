@@ -1,4 +1,4 @@
-# Teaching-HEIGVD-RES-2021-Exercise-Protocol-Design
+# Teaching-HEIGVD-RES-2021-Exercise-protocol-Design
 The first goal is to **specify a client-server protocol**, which will **allow a client to ask a server to compute a calculation and to return the result**. 
 
 You decide the functionality to be implemented, but KEEP IT SIMPLE. Essentially, as a client I should be able to send an operation (addition or multiplication) to the server and get my result back. Of course, once you have the basics in place, you can extend as much as you want. But we do not expect a fully functional calculator, with 1'000 operations and features.

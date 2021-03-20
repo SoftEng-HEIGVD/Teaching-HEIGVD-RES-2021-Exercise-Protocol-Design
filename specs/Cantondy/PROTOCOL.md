@@ -1,4 +1,4 @@
-# RES - Exercise-Protocol-Design 2021
+# RES - Exercise-protocol-Design 2021
 
 Authors : Alessandro Parrino & Dylan Canton 
 
