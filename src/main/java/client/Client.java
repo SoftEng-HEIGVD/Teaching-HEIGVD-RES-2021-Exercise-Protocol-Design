@@ -40,7 +40,8 @@ public class Client {
             //Listen on the reader and show response when there is one
             try {
                 while ((connected && (response = reader.readLine()) != null)) {
-                    logger.log(Level.INFO, response);
+                   // logger.log(Level.INFO, response);
+                    System.out.println(response);
                 }
             } catch (IOException e) {
                 logger.log(Level.SEVERE, "Listening client error", e.getMessage());
