@@ -30,7 +30,13 @@ Le client initialise en premier la connexion au serveur, qui décide d'accepter 
 
 #### What is the sequence of messages exchanged by the client and the server? (flow)
 
-![flow](./media/flow.png)
+1. En premier le serveur lance l'écoute sur le port sélectionné.
+2. Le client essaie ensuite de s'y connecter lors de son lancement directement.
+3. Le serveur répond par un message indiquant qu'il peut recevoir un calcul.
+4. Le client envoie un calcul.
+5. Le serveur le reçoit et le traite, il envoie ensuite une réponse au client : soit le résultat du calcul, soit un message d'erreur si la syntaxe de la commande est erronée. 
+6. Le client reçoit la réponse.
+7. Le client peut se déconnecter à tout moment en envoyant la commande QUIT.
 
 
 
