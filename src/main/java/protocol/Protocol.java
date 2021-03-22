@@ -8,7 +8,7 @@
 package protocol;
 
 /**
- * Class for protocol syntaxe usign in client and server side.
+ * Class for protocol syntax using in client and server side.
  */
 public class Protocol {
     public static final String ADD  = "ADD";

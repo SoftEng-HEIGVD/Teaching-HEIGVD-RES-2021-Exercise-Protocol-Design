@@ -1,16 +1,22 @@
-package server;
+/**
+ * Authors : Dylan Canton, Alessandro Parrino
+ * Date 22.03.2021
+ * Exercice Protocol-Design
+ * File : Server.java
+ */
 
+package server;
 
 import java.io.*;
 import java.net.*;
 
-import static protocol.Protocol.*;
+import protocol.Protocol;
 
 public class Server {
     public void waitForIncomingClient() throws IOException {
 
-        // Initialize Server socket
-        ServerSocket receptionistSocket = new ServerSocket(PORT);
+        // Initialize Server socket and waiting for client
+        ServerSocket receptionistSocket = new ServerSocket(Protocol.PORT);
         Socket workerSocket = receptionistSocket.accept();
 
         // Return current address IP
@@ -20,9 +26,9 @@ public class Server {
         if (socketAddress instanceof InetSocketAddress) {
             InetAddress inetAddress = ((InetSocketAddress)socketAddress).getAddress();
             if (inetAddress instanceof Inet4Address) //Check that the address is IPv4
-                System.out.println("Im listening at IPv4: " + inetAddress + " Port: " + PORT);
+                System.out.println("Im listening at IPv4: " + inetAddress + " Port: " + Protocol.PORT);
             else if (inetAddress instanceof Inet6Address) //Check that the address is IPv6
-                System.out.println("Im listening at IPv6: " + inetAddress + " Port: " + PORT);
+                System.out.println("Im listening at IPv6: " + inetAddress + " Port: " + Protocol.PORT);
             else
                 System.err.println("Not an IP address.");
         } else {
@@ -49,7 +55,7 @@ public class Server {
 
             // Check if the command is "QUIT"
             // "QUIT" command stops the server
-            if(tokens.length == 1 && tokens[0].equals(QUIT)){
+            if(tokens.length == 1 && tokens[0].equals(Protocol.QUIT)){
                 // Close reader and writer
                 reader.close();
                 writer.close();
@@ -62,17 +68,23 @@ public class Server {
 
                 //Get each element
                 String operation = tokens[0];
-                int operand1 = Integer.parseInt(tokens[1]);
-                int operand2 = Integer.parseInt(tokens[2]);
 
-                // Perform the chosen operation and write the result
+                //Try to convert string to int and catch exception
+                try{
+                    int operand1 = Integer.parseInt(tokens[1]);
+                    int operand2 = Integer.parseInt(tokens[2]);
 
-                // If the operation is invalid, an error message returns
-                switch (operation) {
-                    case ADD : writer.println("Result : "+ (operand1 + operand2));break;
-                    case SUB : writer.println("Result : "+ (operand1 - operand2));break;
-                    case MULT: writer.println("Result : "+ (operand1 * operand2));break;
-                    default: writer.println("ERROR : Invalid command, try again!");
+                    // Perform the chosen operation and write the result
+                    // If the operation is invalid, an error message returns
+                    switch (operation) {
+                        case Protocol.ADD : writer.println("Result : " + (operand1 + operand2));break;
+                        case Protocol.SUB : writer.println("Result : " + (operand1 - operand2));break;
+                        case Protocol.MULT: writer.println("Result : " + (operand1 * operand2));break;
+                        default: writer.println("ERROR : Invalid command, try again!");
+                    }
+                }
+                catch(NumberFormatException e){
+                    writer.println("ERROR : Invalid command, try again!");
                 }
             }else {
                 writer.println("ERROR : Invalid command, try again!");

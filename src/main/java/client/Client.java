@@ -40,7 +40,6 @@ public class Client {
             //Listen on the reader and show response when there is one
             try {
                 while ((connected && (response = reader.readLine()) != null)) {
-                   // logger.log(Level.INFO, response);
                     System.out.println(response);
                 }
             } catch (IOException e) {
@@ -68,7 +67,7 @@ public class Client {
             //Read data from the server
             reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            //Connecion is on (for responseListener class)
+            //Connection is on (for responseListener class)
             connected = true;
         }
         catch(UnknownHostException e){
