@@ -47,13 +47,13 @@ Le client peut envoyer les messages suivants:
 | ERROR | ERROR_MSG | Le signale une erreur au client |
 
 La liste des opérations est 
-| Code     Description  |
-|--------|:--------------:|:--------------:|
-| ADD | - | Opérande addition |
-| SUB | - | Opérande soustraction |
-| MULT | - | Opérande multiplication |
-| DIV | - | Opérande division |
-| POW | - | Opérande puissance |
+| Code   |  Description  |
+|--------|:--------------:|
+| ADD | Opérande addition |
+| SUB | Opérande soustraction |
+| MULT | Opérande multiplication |
+| DIV | Opérande division |
+| POW | Opérande puissance |
 
 
 &nbsp;
