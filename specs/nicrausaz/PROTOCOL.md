@@ -5,7 +5,7 @@
 ## Objectifs
 
 Le but de ce laboratoire est d'imaginer et d'implémenter un protocole client-serveur permettant de réaliser des opérations arithmétiques, telle une calculatrice.
-Ce protocole sela utilisable au travers d'un réseau TCP/IP. Le serveur est capable de réaliser des opérations aritmétiques de base (+, -, *, /, ^x).
+Ce protocole cela utilisable au travers d'un réseau TCP/IP. Le serveur est capable de réaliser des opérations arithmétiques de base (+, -, *, /, ^x).
 
 &nbsp;
 
@@ -27,11 +27,13 @@ Les types de requêtes sont définies ainsi
 &nbsp;
 
 ### Client
+
+Le client peut envoyer les messages suivants:
+
 | Code   |      Params      |  Description  |
 |--------|:----------------:|--------------:|
-| INIT | - | Initialise la communication |
-| _OPERATION_ | VALUE VALUE | Le client envoie une operation à effectuer (voir Opération serveur) |
-| HELP | - | Le client demande à recevoir les instructions d'aide (liste des opérations disponibles)
+| _OPERATION_ | VALUE VALUE[optionnal] | Le client envoie une opération à effectuer (voir Opération serveur) (Si la 2e valeur est vide, elle sera à 0) |
+| LIST | - | Le client demande à recevoir les instructions d'aide (liste des opérations disponibles) |
 | QUIT | - | Le client met fin à la communication
 
 &nbsp;
@@ -40,10 +42,9 @@ Les types de requêtes sont définies ainsi
 
 | Code   |      Params      |  Description  |
 |--------|:----------------:|--------------:|
-| HELLO | Liste des opérations | Le serveur confirme l'initalisation du client en lui confirmant qu'il est pret à recevoir sa demande et envoie sa liste de commandes |
-| RESULT | VALUE | Le serveur retourne le resultat d'un CALC |
-| ERROR | ERROR_MSG | Le signale une erreur au client |
 | LIST  | Liste des opérations | Le serveur renvoie la liste des opérations qu'il implémente
+| RESULT | VALUE | Le serveur retourne le résultat d'un CALC |
+| ERROR | ERROR_MSG | Le signale une erreur au client |
 
 La liste des opérations est 
 | Code     Description  |
@@ -61,14 +62,15 @@ La liste des opérations est
 
 | Code   |    Nom court     |  Description  |
 |--------|:----------------:|--------------:|
+| 340 | CMD_ERR | La commande demandée n'existe pas |
 | 350 | SYNTAX_ERR | L'opération demandée n'est pas valide (format) |
-| 340 | CONN_ERR | La connexion n'as pas pu être confirmée |
+| 360 | ARM_ERR | Erreur arithmétique (division par 0) |
 
 &nbsp;
 
 ## Exemple de fonctionnement
 
-Voici l'exemple d'une séquence d'intéraction entre un client et un serveur:
+Voici l'exemple d'une séquence d'interaction entre un client et un serveur:
 
 > S: = Serveur, C: = Client
 
