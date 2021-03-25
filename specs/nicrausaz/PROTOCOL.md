@@ -34,7 +34,7 @@ Le client peut envoyer les messages suivants:
 |--------|:----------------:|--------------:|
 | _OPERATION_ | VALUE VALUE[optionnal] | Le client envoie une opération à effectuer (voir Opération serveur) (Si la 2e valeur est vide, elle sera à 0) |
 | LIST | - | Le client demande à recevoir les instructions d'aide (liste des opérations disponibles) |
-| QUIT | - | Le client met fin à la communication
+| QUIT | - | Le client met fin à la communication |
 
 &nbsp;
 
@@ -42,7 +42,7 @@ Le client peut envoyer les messages suivants:
 
 | Code   |      Params      |  Description  |
 |--------|:----------------:|--------------:|
-| LIST  | Liste des opérations | Le serveur renvoie la liste des opérations qu'il implémente
+| LIST  | Liste des opérations | Le serveur renvoie la liste des opérations qu'il implémente |
 | RESULT | VALUE | Le serveur retourne le résultat d'un CALC |
 | ERROR | ERROR_MSG | Le signale une erreur au client |
 
