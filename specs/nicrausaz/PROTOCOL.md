@@ -48,7 +48,7 @@ Le client peut envoyer les messages suivants:
 
 La liste des opérations est 
 | Code     Description  |
-|--------|:--------------:|
+|--------|:--------------:|:--------------:|
 | ADD | - | Opérande addition |
 | SUB | - | Opérande soustraction |
 | MULT | - | Opérande multiplication |
