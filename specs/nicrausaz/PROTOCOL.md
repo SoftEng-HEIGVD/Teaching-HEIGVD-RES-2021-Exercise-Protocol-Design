@@ -4,8 +4,8 @@
 
 ## Objectifs
 
-The but de ce laboratoire est d'imaginer et d'implémenter un protocole client-serveur permettant de réaliser des opérations arithmétiques, telle une calculatrice.
-Ce protocole sela utilisable au travers d'un réseau TCP/IP. Le serveur est capable de réaliser des opérations aritmétiques de base (+, -, *, /).
+Le but de ce laboratoire est d'imaginer et d'implémenter un protocole client-serveur permettant de réaliser des opérations arithmétiques, telle une calculatrice.
+Ce protocole sela utilisable au travers d'un réseau TCP/IP. Le serveur est capable de réaliser des opérations aritmétiques de base (+, -, *, /, ^x).
 
 &nbsp;
 
@@ -30,8 +30,8 @@ Les types de requêtes sont définies ainsi
 | Code   |      Params      |  Description  |
 |--------|:----------------:|--------------:|
 | INIT | - | Initialise la communication |
-| CALC | VALUE OPERAND VALUE | Le client envoie une opération à effectuer |
-| HELP | - | Le client demande à recevoir les instrauction d'aide (liste des opérations disponibles)
+| _OPERATION_ | VALUE VALUE | Le client envoie une operation à effectuer (voir Opération serveur) |
+| HELP | - | Le client demande à recevoir les instructions d'aide (liste des opérations disponibles)
 | QUIT | - | Le client met fin à la communication
 
 &nbsp;
@@ -40,10 +40,20 @@ Les types de requêtes sont définies ainsi
 
 | Code   |      Params      |  Description  |
 |--------|:----------------:|--------------:|
-| HELLO | - | Le serveur confirme l'initalisation du client en lui confirmant qu'il est pret à recevoir sa demande |
+| HELLO | Liste des opérations | Le serveur confirme l'initalisation du client en lui confirmant qu'il est pret à recevoir sa demande et envoie sa liste de commandes |
 | RESULT | VALUE | Le serveur retourne le resultat d'un CALC |
 | ERROR | ERROR_MSG | Le signale une erreur au client |
-| LIST  | | Le serveur renvoie la liste des opérations qu'il implémente
+| LIST  | Liste des opérations | Le serveur renvoie la liste des opérations qu'il implémente
+
+La liste des opérations est 
+| Code     Description  |
+|--------|:--------------:|
+| ADD | - | Opérande addition |
+| SUB | - | Opérande soustraction |
+| MULT | - | Opérande multiplication |
+| DIV | - | Opérande division |
+| POW | - | Opérande puissance |
+
 
 &nbsp;
 
@@ -58,15 +68,15 @@ Les types de requêtes sont définies ainsi
 
 ## Exemple de fonctionnement
 
-Voici l'exemple d'une séquence d'intéraction entre un client et un serveur
+Voici l'exemple d'une séquence d'intéraction entre un client et un serveur:
 
 > S: = Serveur, C: = Client
 
 
 C: INIT  
-S: HELLO  
+S: HELLO ADD, SUB, MULT, DIV, POW
 C: HELP  
-S: LIST
+S: LIST ADD, SUB, MULT, DIV, POW
 C: CALC 4 + 6  
 S: RESULT 10  
 C: CALC 5 6  
