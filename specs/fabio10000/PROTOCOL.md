@@ -1,4 +1,4 @@
-# Phase1: write the specification
+# Phase 1: write the specification
 
 The server is reachable from the IP address: `insert address` with the port number: `insert port number`.
 
@@ -25,5 +25,16 @@ S: ADD 2;SUB 2;MUL 2;DIV 2;
 
 C: ADD 3 2
 S: 5 200 OK
+
+C: DIV 2 0
+S: NULL 422 Unprocessable entity
+
+C: MUL 2 3 4
+S: NULL 400 Bad Request
+
+C: oiwuqeoiuqwe
+S: NULL 404 Not Found
+
+C: QUIT
 ```
 
