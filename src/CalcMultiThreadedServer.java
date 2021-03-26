@@ -182,19 +182,19 @@ class CalcMultiThreadedServer {
 
             switch (error) {
             case INVALID_NUMBER_OPERANDS:
-                // TODO:
+                out.print("310 INVALID NUMBER OPERANDS");
                 break;
             case INVALID_OPERAND_FORMAT:
-                // TODO:
+                out.print("320 INVALID OPERAND FORMAT");
                 break;
             case INVALID_OPERATION:
-                // TODO:
+                out.print("330 INVALID OPERATION");
                 break;
             case MISSING_OPERATOR:
-                // TODO:
+                out.print("340 MISSING OPERATOR");
                 break;
             case UNKNOWN_OPERATOR:
-                // TODO:
+                out.print("350 UNKNOWN OPERATOR");
                 break;
             case UNKNOWN_OPERATION:
                 out.print("300 UNKNOWN OPERATION");
