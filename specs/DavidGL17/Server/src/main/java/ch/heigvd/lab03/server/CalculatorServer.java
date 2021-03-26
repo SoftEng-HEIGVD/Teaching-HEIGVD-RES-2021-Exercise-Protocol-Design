@@ -38,6 +38,11 @@ public class CalculatorServer {
             communicationFunction(reader, writer);
          } catch (IOException e) {
             writer.println(ErrorType.SYSTEM_ERROR.getMessage());
+         } catch (ServerClosingException e){
+            reader.close();
+            writer.close();
+            clientSocket.close();
+            return;
          }
          reader.close();
          writer.close();
@@ -45,7 +50,8 @@ public class CalculatorServer {
       }
    }
 
-   private void communicationFunction(BufferedReader reader, PrintWriter writer) throws IOException {
+   private void communicationFunction(BufferedReader reader, PrintWriter writer)
+           throws IOException, ServerClosingException {
       String[] message = reader.readLine().split(" ");
       if (MessageType.valueOf(message[0]) != MessageType.CONN) {
          writer.println(ErrorType.WRONG_MESSAGE.getMessage());
@@ -61,7 +67,7 @@ public class CalculatorServer {
          }
          if (message[0].equals("q")){
             writer.println("Closing server");
-            return;
+            throw new ServerClosingException();
          }
          switch (MessageType.valueOf(message[0])) {
             case ERROR:
@@ -115,5 +121,8 @@ public class CalculatorServer {
       }
    }
 
+   class ServerClosingException extends Exception{
+
+   }
 
 }

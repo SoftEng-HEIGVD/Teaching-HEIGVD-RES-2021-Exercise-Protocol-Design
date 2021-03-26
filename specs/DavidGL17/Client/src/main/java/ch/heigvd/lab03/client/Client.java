@@ -76,7 +76,6 @@ public class Client {
                   System.out.println("The answer is : " + responseSplit[1]);
                   break;
                case ERROR:
-
                   switch (ErrorType.getErrorWithMessage(response)) {
                      case COMPUTATION_ERROR:
                      case SYNTAX_ERROR:
