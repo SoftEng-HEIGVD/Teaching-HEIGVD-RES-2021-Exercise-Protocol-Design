@@ -21,6 +21,8 @@ public class Client {
      */
     public void connect(String ip) throws IOException {
         socket = new Socket(InetAddress.getByName(ip), port);
+
+
         in = new BufferedReader((new InputStreamReader(socket.getInputStream())));
         out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 
@@ -156,7 +158,14 @@ public class Client {
 
         System.out.println("Welcome to the online calculator");
         System.out.println("You are connecting to " + ip);
-        client.connect(ip);
+
+        try{
+            client.connect(ip);
+        }catch (IOException e){
+            System.err.println("Could not connect to server");
+            return;
+        }
+
         System.out.println(client.displayAvailableOperations());
 
 
