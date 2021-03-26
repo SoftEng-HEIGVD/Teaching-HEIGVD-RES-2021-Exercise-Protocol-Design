@@ -53,4 +53,5 @@ Serveur : ERREUR : Une erreur est survenue -> Le format est invalide. Le format 
 Client  : 4 - 1<br />
 Serveur : ERREUR : Une erreur est survenue -> L'opérateur (-) n'est pas supporté.<br />
 Client  : Exit<br />
+Serveur : Merci d'avoir visité CALC. A bientôt !<br />
 
