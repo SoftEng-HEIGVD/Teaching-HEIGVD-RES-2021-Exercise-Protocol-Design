@@ -50,11 +50,6 @@ public class ServantWorker implements Runnable{
         return result;
     }
 
-
-
-
-
-
     public void notifyWorkerShutdown() {
         try {
             reader.close();
@@ -84,13 +79,21 @@ public class ServantWorker implements Runnable{
             while(shouldRun){
                 blabla = reader.readLine();
                 command = blabla.split(" ");
-                if(command[0].equals(CalculatorProtocol.CMD_CALC))
-
-                if(command[0].equals(CalculatorProtocol.))
-
-                if(blabla.equals(CalculatorProtocol.CMD_QUIT)){
+                if(command[0].equals(CalculatorProtocol.CMD_CALC)){
+                    if(command.length == 4) {
+                        writer.println(calculate(command[1], Integer.parseInt(command[2]), Integer.parseInt(command[3])));
+                    }
+                    else{
+                        writer.println(CalculatorProtocol.CMD_ERROR_BAD);
+                    }
+                }
+                else if (blabla.equals(CalculatorProtocol.CMD_QUIT)){
                     shouldRun = false;
                 }
+                else{
+                    writer.println(CalculatorProtocol.CMD_ERROR_UNKNOWN);
+                }
+                writer.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
