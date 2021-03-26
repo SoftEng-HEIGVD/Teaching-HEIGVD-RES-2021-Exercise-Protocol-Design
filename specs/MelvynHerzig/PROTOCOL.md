@@ -28,20 +28,22 @@ Le protocole CALC définit 6 messages de base:
 - ADD
 - MULT
 - BAD_REQUEST
-- DONE
+- QUIT
+- END
 
 Les opérations sont donc un message en soit et toutes ne supportes que deux opérandes.
 La séquence CRLF (10,13) indique la fin des lignes.
 
 2.1 WELCOME
 Ce message est envoyé au client dès sa connexion, il lui indique les opérations possibles
-à raison de une par ligne.
+à raison de une par ligne et termine avec END.
 
 Exemple:
 WELCOME CRLF
 ADD CRLF
 MULT CRLF
 SUB CRLF
+END CRLF
 
 
 on voit dans l'exemple que le serveur qui envoie ce message supporte la soustraction en plus 
@@ -64,11 +66,11 @@ Le résultat est envoyé dans un message RESULT suivi du résultat
 Exemple
 RESULT 8.2 CRLF
 
-2.4 DONE
-Le message DONE, envoyé par le client termine la connexion
+2.4 QUIT
+Le message QUIT, envoyé par le client termine la connexion
 
 Exemple:
-DONE
+QUIT
 
 3. Éléments spécifiques
 
@@ -86,8 +88,8 @@ raison de 1 par ligne.
 Si le serveur recoit une mauvaise requête, il retourne un message BAD_REQUEST suivi
 d'un code décrivant l'erreur:
 
-- 1 : Commande inconnue
-- 2 : Commande mal formée
+- 1 : Opération inconnue
+- 2 : Opérande manquant
 - 3 : Tout autre erreur
 
 4. Exemples
@@ -98,7 +100,7 @@ C: ADD 1.2 2 CRLF
 S: RESULT 2.4 CRLF
 C: MULT 4 -1 CRLF
 S: RESULT -4 CRLF
-C: DONE CRLF
+C: QUIT CRLF
 
 S: WELCOME CRLF
 S: ADD CRLF
