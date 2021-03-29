@@ -9,6 +9,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -64,7 +65,11 @@ public class ServantWorker implements Runnable {
                                 throw new Exception("401");
                         }
 
-                        out.println("RESULT " + res);
+                        out.print("RESULT ");
+                        if(res == (long) res)
+                            out.println(String.format("%d", (long)res));
+                        else
+                            out.println(String.format(Locale.FRENCH, "%s",res));
                     } catch (Exception ex) {
                         String error = ex.getMessage();
                         if(error == null)
