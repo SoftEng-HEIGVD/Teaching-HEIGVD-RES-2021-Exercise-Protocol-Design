@@ -5,25 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="223dca23-536c-466e-9609-33b76a16b506" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exerciceProtocol/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/exercise-protocol.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/Client/CalculatorClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/Client/ICalculatorClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/Protocol/CalculatorProtocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/Server/CalculatorServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/main/java/com/heigvd/Server/ServantWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CassandreWoj/exercise-protocol/src/test/java/com/heigvd/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/heigvd/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/heigvd/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/heigvd/Server/CalculatorServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/heigvd/Server/CalculatorServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1616772784953</updated>
       <workItem from="1616772790380" duration="33000" />
+      <workItem from="1617006987910" duration="408000" />
     </task>
     <servers />
   </component>

@@ -19,9 +19,5 @@ public class App
         CalculatorServer server = new CalculatorServer(port);
         server.startServer();
 
-        CalculatorClient client1 = new CalculatorClient();
-        //CalculatorClient client2 = new CalculatorClient();
-        client1.connect(ip,port);
-
     }
 }

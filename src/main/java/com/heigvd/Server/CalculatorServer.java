@@ -38,11 +38,12 @@ public class CalculatorServer {
 
     public CalculatorServer(int listenPort) {
         this.listenPort = listenPort;
+
     }
 
     public void startServer() throws IOException {
         try{
-            ServerSocket serverSocket = new ServerSocket(listenPort);
+            this.serverSocket = new ServerSocket(listenPort);
             shouldRun = true;
         }catch(IOException e) {
             LOG.log(Level.SEVERE, null, e);
