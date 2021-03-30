@@ -60,14 +60,39 @@ public class SingleThreadedServer {
                 String line;
                 boolean shouldRun = true;
 
-                out.println("Welcome to the Single-Threaded Server.\nSend me text lines and conclude with the BYE command.");
+                out.println("Welcome to the Single-Threaded Server.\nSend me text lines and conclude with the QUIT command.");
                 out.flush();
-                LOG.info("Reading until client sends BYE or closes the connection...");
+                LOG.info("Reading until client sends quit or closes the connection...");
                 while ( (shouldRun) && (line = in.readLine()) != null ) {
+                    int nbArgs = line.split(" ").length;
                     if (line.equalsIgnoreCase("quit")) {
                         shouldRun = false;
-                    } else if (line.split(" ")[0].equalsIgnoreCase("compute")){
-                        out.println("Compute ok\r\n");
+                    } else if (nbArgs == 4 && line.split(" ")[0].equalsIgnoreCase("compute")){
+                        boolean numOk = true;
+                        double num1 =0, num2=0;
+                        try {
+                            num1 = Double.parseDouble(line.split(" ")[2]);
+                            num2 = Double.parseDouble(line.split(" ")[3]);
+                        } catch (NumberFormatException nfe) {
+                            out.println("Error 400. Syntax error\r\n");
+                            out.println("Must be number\n");
+                            numOk = false;
+                        }
+                        if (numOk) {
+                            double result;
+                            switch (line.split(" ")[1]) {
+                                case "ADD":
+                                case "add":
+                                    result = num1 + num2;
+                                    out.println(num1 + "+" + num2 + "=" + result +"\r\n");
+                                    break;
+                                case "MULT":
+                                case "mult":
+                                    result = num1 * num2;
+                                    out.println(num1 + "*" + num2 + "=" + result +"\r\n");
+                                    break;
+                            }
+                        }
                     } else {
                         out.println("Error 400. Syntax error\r\n");
                     }
