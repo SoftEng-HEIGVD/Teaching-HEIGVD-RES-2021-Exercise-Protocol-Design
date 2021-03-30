@@ -27,7 +27,10 @@ Client :
 `OPERATION VAL1 VAL2 \n`.
 
 Serveur : 
-`RES VAL1` ou `ERR`.
+`RES VAL1 \n` ou `ERR \n`.
+
+Tous les messages finissent par un retour à la ligne `\n` (à voir si compatible sur tous les OS). 
+
 
 ## Who closes the connection and when?
 Le client ferme la connexion, via le message `CIAO`. 
