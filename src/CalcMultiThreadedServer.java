@@ -9,6 +9,10 @@ import java.util.Arrays;
 class CalcMultiThreadedServer {
     private final static int PORT = 3101;
 
+    public static void main(String[] args) {
+        new CalcMultiThreadedServer().serveClients();
+    }
+
     public CalcMultiThreadedServer() {
 
     }
@@ -20,34 +24,30 @@ class CalcMultiThreadedServer {
     private class ReceptionistWorker implements Runnable {
         @Override
         public void run() {
-            ServerSocket localSocket;
+            try (ServerSocket localSocket = new ServerSocket(PORT)) {
+                while (true) {
+                    try {
+                        Socket remoteSocket = localSocket.accept();
+                        new Thread(new ServantWorker(remoteSocket)).start();
+                    } catch (IOException e) {
 
-            try {
-                localSocket = new ServerSocket(PORT);
+                    }
+                }
             } catch (IOException e) {
                 return;
             }
-
-            while (true) {
-                try {
-                    Socket remoteSocket = localSocket.accept();
-                    new Thread(new ServantWorker(remoteSocket)).start();
-                } catch (IOException e) {
-
-                }
-            }
         }
     }
+
+    private enum Error {
+        INVALID_NUMBER_OPERANDS, INVALID_OPERAND_FORMAT, INVALID_OPERATION, MISSING_OPERATOR, UNKNOWN_OPERATOR,
+        UNKNOWN_OPERATION
+    };
 
     private class ServantWorker implements Runnable {
         private Socket remoteSocket;
         private BufferedReader in;
         private PrintWriter out;
-
-        private enum Error {
-            INVALID_NUMBER_OPERANDS, INVALID_OPERAND_FORMAT, INVALID_OPERATION, MISSING_OPERATOR, UNKNOWN_OPERATOR,
-            UNKNOWN_OPERATION
-        };
 
         public ServantWorker(Socket remoteSocket) {
             try {
@@ -127,7 +127,7 @@ class CalcMultiThreadedServer {
                 if (arguments.length == 3) {
                     try {
                         int lhs = Integer.parseInt(arguments[1]);
-                        int rhs = Integer.parseInt(arguments[1]);
+                        int rhs = Integer.parseInt(arguments[2]);
 
                         result(lhs + rhs);
                     } catch (NumberFormatException e) {
@@ -142,7 +142,7 @@ class CalcMultiThreadedServer {
                 if (arguments.length == 3) {
                     try {
                         int lhs = Integer.parseInt(arguments[1]);
-                        int rhs = Integer.parseInt(arguments[1]);
+                        int rhs = Integer.parseInt(arguments[2]);
 
                         result(lhs * rhs);
                     } catch (NumberFormatException e) {
@@ -157,7 +157,7 @@ class CalcMultiThreadedServer {
                 if (arguments.length == 3) {
                     try {
                         int lhs = Integer.parseInt(arguments[1]);
-                        int rhs = Integer.parseInt(arguments[1]);
+                        int rhs = Integer.parseInt(arguments[2]);
 
                         if (lhs != 0) {
                             result(lhs / rhs);
@@ -205,7 +205,7 @@ class CalcMultiThreadedServer {
         }
 
         void result(int result) {
-            out.print("ERROR " + result + "\r\n");
+            out.print("RESULT " + result + "\r\n");
         }
     }
 }
