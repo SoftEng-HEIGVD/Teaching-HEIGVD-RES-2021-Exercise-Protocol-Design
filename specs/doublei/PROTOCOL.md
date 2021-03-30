@@ -19,7 +19,7 @@ Errors:
     300. missing second parameter
 
 ## What happens when a message is received from the other party? (semantics)
-
+[pas compris]
 
 ## What is the syntax of the messages? How we generate and parse them? (syntax)
 A message should finish by a end line char. The party then will split the message where space is. The first part of the message should be a keyword. The rest should be the "parameters" for this keyword.
