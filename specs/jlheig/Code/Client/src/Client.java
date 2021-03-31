@@ -19,30 +19,32 @@ public class Client {
 
         String server = args[0];
         client.connect(server, PORT);
+        boolean stayConnected = true;
         String input;
         do{
             input = scan.nextLine();
 
             if(input.compareTo(QUIT) == 0){
-                client.isConnected = false;
+                stayConnected = false;
             }
 
             client.writer.println(input);
+            client.writer.flush();
 
-        }while(!client.isConnected);
+        }while(stayConnected);
 
         client.disconnect();
     }
 
-    public static String QUIT = "QUIT";
-    public static int PORT = 3334;
+    private static String QUIT = "QUIT";
+    private static int PORT = 3334;
 
     private Logger logger = Logger.getLogger(Client.class.getName());
 
     Socket clientSocket;
     PrintWriter writer;
     BufferedReader reader;
-    boolean isConnected;
+    boolean isConnected = false;
 
     public void connect(String server, int port) throws IOException{
         try{
@@ -52,13 +54,13 @@ public class Client {
             isConnected = true;
         }
         catch (IOException e){
-            logger.log(Level.SEVERE, "Impossible to connect to the server, server not found", e.getMessage());
+            logger.log(Level.SEVERE, "Impossible to connect to the server", e.getMessage());
         }
 
-        listener();
+        new Thread(new listener()).start();
     }
 
-    public void disconnect() throws IOException{
+    public void disconnect() throws IOException {
         try {
             if (isConnected) {
                 logger.log(Level.INFO, "Client wants to quit");
@@ -73,17 +75,18 @@ public class Client {
         }
     }
 
-    public void listener(){
-        try{
+    class listener implements Runnable {
+        public void run(){
             String resp;
-            resp = reader.readLine();
-            while(isConnected && (resp != null)){
-                System.out.println(resp);
+            try{
+                while((isConnected && (resp = reader.readLine()) != null)){
+                    System.out.println(resp);
+                }
+            }
+            catch (IOException e){
+                logger.log(Level.SEVERE, "Error while listening", e.getMessage());
+                isConnected = false;
             }
         }
-        catch (IOException e){
-            logger.log(Level.SEVERE, "Error while listening", e.getMessage());
-        }
     }
-
 }
