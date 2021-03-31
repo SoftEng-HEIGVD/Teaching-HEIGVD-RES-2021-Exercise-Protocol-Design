@@ -1,44 +1,29 @@
 package com.company;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class ClientCalc {
-    //private int port;
-    private static int BUFFER_SIZE = 1000;
-    //private static String[] OPERATIONS = new String[] {"ADD", "SOUS"};
-
     private Socket clientSocket;
-    private OutputStream os;
-    private InputStream is;
-    private ByteArrayOutputStream responseBuffer;
+    private PrintWriter outputWriter;
+    private BufferedReader inputReader;
 
     public ClientCalc(String host, int port) {
         if (port <= 0)
             throw new IllegalArgumentException("Port must be > 0");
 
-        responseBuffer = new ByteArrayOutputStream();
+        //responseBuffer = new ByteArrayOutputStream();
         initConnection(host, port);
     }
 
 
     public void sendCalcRequest(String request) {
         try {
-            os.write(request.getBytes());
+            outputWriter.println(request); // Envoie de la requête au serveur
 
-            byte[] buffer = new byte[BUFFER_SIZE];
-            /*int newBytes;
-            while ((newBytes = is.read(buffer)) != -1) {
-                responseBuffer.write(buffer, 0, newBytes);
-            }*/
-
-            responseBuffer.writeBytes(is.readAllBytes());
-
-            checkResponse(responseBuffer.toString().split(" "));
-            responseBuffer.flush();
+            String response = inputReader.readLine(); // Lecture de la réponse du serveur
+            checkResponse(response.split(" "));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,8 +38,9 @@ public class ClientCalc {
         }
 
         try {
-            os = clientSocket.getOutputStream();
-            is = clientSocket.getInputStream();
+            outputWriter = new PrintWriter(clientSocket.getOutputStream(), true, StandardCharsets.UTF_8);
+            inputReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), StandardCharsets.UTF_8));
+            //is = clientSocket.getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
         }
