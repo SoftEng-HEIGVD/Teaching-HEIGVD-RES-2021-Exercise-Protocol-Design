@@ -13,9 +13,9 @@ public class Main {
 
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         while (true) {
-            System.out.print("CLient > ");
+            System.out.print("Client > ");
             StringBuilder userInput = new StringBuilder(myObj.nextLine());
-            userInput.append('\r').append('\n');
+            //userInput.append('\r').append('\n');
             client.sendCalcRequest(userInput.toString());
         }
 
