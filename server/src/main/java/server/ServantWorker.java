@@ -1,9 +1,6 @@
 package server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
@@ -24,7 +21,7 @@ public class ServantWorker implements Runnable {
         try {
             this.clientSocket = clientSocket;
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(), StandardCharsets.UTF_8));
-            out = new PrintWriter(clientSocket.getOutputStream());
+            out = new PrintWriter(new OutputStreamWriter(clientSocket.getOutputStream(), StandardCharsets.UTF_8)); // PrintWriter fait du buffering
         } catch (IOException ex) {
             Logger.getLogger(ServantWorker.class.getName()).log(Level.SEVERE, null, ex);
         }
