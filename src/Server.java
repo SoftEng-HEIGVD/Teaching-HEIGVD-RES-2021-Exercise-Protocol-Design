@@ -7,7 +7,7 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         boolean serverShutdownRequested = false;
-        ServerSocket receptionistSocket = new ServerSocket(3232);
+        ServerSocket receptionistSocket = new ServerSocket(8827);
         String response = "";
 
         while (!serverShutdownRequested) {
